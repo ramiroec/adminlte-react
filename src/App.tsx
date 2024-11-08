@@ -15,6 +15,7 @@ import Dashboard from '@pages/Dashboard';
 import Blank from '@pages/Blank';
 import Feriados from '@pages/Feriados';
 import Aire from '@pages/Aire';
+import Usuarios from '@pages/Usuarios';
 import SubMenu from '@pages/SubMenu';
 import Profile from '@pages/profile/Profile';
 
@@ -98,6 +99,7 @@ const App = () => {
             <Route path="/blank" element={<Blank />} />
             <Route path="/feriados" element={<Feriados />} />
             <Route path="/aire" element={<Aire />} />
+            <Route path="/usuarios" element={<Usuarios />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/" element={<Dashboard />} />
           </Route>

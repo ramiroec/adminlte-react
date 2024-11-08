@@ -39,7 +39,7 @@ const Usuarios = () => {
         const response = await fetch(API_URL);
         const data: User[] = await response.json();
         setUsuarios(data);
-        setFilteredUsuarios(data); // Initial list is the full set of users
+        setFilteredUsuarios(data); // Lista inicial
       } catch (error) {
         console.error('Error fetching users:', error);
       }

@@ -25,11 +25,11 @@ const Footer = ({
         <strong>
           <span>Copyright © {DateTime.now().toFormat('y')} </span>
           <a
-            href="https://erdkse.com"
+            href="https://github.com/ramiroec/adminlte-react"
             target="_blank"
             rel="noopener noreferrer"
           >
-            erdkse.com
+            @ramiroec
           </a>
           <span>.</span>
         </strong>

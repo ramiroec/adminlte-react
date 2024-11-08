@@ -13,6 +13,7 @@ export interface IMenuItem {
   children?: Array<IMenuItem>;
 }
 
+// Se agregan los enlaces aquí
 export const MENU: IMenuItem[] = [
   {
     name: i18n.t('menusidebar.label.dashboard'),
@@ -25,6 +26,16 @@ export const MENU: IMenuItem[] = [
     path: '/blank',
   },
   {
+    name: 'Calidad del Aire',
+    icon: 'fas fa-wind nav-icon',
+    path: '/aire',
+  },
+  {
+    name: 'Feriados',
+    icon: 'fas fa-calendar-day nav-icon',
+    path: '/feriados',
+  },
+  {
     name: i18n.t('menusidebar.label.mainMenu'),
     icon: 'far fa-caret-square-down nav-icon',
     children: [
@@ -33,7 +44,6 @@ export const MENU: IMenuItem[] = [
         icon: 'fas fa-hammer nav-icon',
         path: '/sub-menu-1',
       },
-
       {
         name: i18n.t('menusidebar.label.blank'),
         icon: 'fas fa-cogs nav-icon',

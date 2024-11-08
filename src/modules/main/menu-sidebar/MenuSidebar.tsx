@@ -36,6 +36,11 @@ export const MENU: IMenuItem[] = [
     path: '/feriados',
   },
   {
+    name: 'Usuarios',
+    icon: 'fas fa-user nav-icon',
+    path: '/usuarios',
+  },
+  {
     name: i18n.t('menusidebar.label.mainMenu'),
     icon: 'far fa-caret-square-down nav-icon',
     children: [

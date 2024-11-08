@@ -21,5 +21,12 @@ export default ({ mode }) => {
         '@pages': path.resolve(__dirname, './src/pages'),
       },
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          quietDeps: true, // Deshabilita las advertencias de dependencias
+        },
+      },
+    },
   });
 };

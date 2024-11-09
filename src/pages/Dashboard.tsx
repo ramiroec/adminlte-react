@@ -16,8 +16,8 @@ const Dashboard = () => {
           <div className="row">
             <div className="col-lg-3 col-6">
               <SmallBox
-                title="New Orders"
-                text="150"
+                title="Nuevas Ordenes"
+                text="70"
                 navigateTo="#"
                 variant="info"
                 icon={{
@@ -48,10 +48,10 @@ const Dashboard = () => {
             </div>
             <div className="col-lg-3 col-6">
               <SmallBox
-                title="User Registrations"
+                title="Usuarios Registrados"
                 text="44"
                 navigateTo="#"
-                variant="warning"
+                variant="primary"
                 icon={{
                   content: (
                     <FontAwesomeIcon

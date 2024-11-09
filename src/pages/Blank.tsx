@@ -7,13 +7,9 @@ const Blank = () => {
       <section className="content">
         <div className="container-fluid">
           <div className="card">
-            <div className="card-header">
-              <h3 className="card-title">Title</h3>
-            </div>
             <div className="card-body">
-              Start creating your amazing application!
+              Aquí puedes crear tu aplicación increible!
             </div>
-            <div className="card-footer">Footer</div>
           </div>
         </div>
       </section>

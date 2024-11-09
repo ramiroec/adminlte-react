@@ -1,95 +1,95 @@
 {
   "login": {
     "label": {
-      "signIn": "Sign in to start your session",
-      "rememberMe": "Remember Me",
-      "forgotPass": "I forgot my password",
-      "registerNew": "Register a new membership"
+      "signIn": "Inicia sesión para comenzar tu sesión",
+      "rememberMe": "Recuérdame",
+      "forgotPass": "Olvidé mi contraseña",
+      "registerNew": "Registrar una nueva cuenta"
     },
     "button": {
       "signIn": {
-        "label": "Sign In",
-        "social": "Sign in using {{what}}"
+        "label": "Iniciar sesión",
+        "social": "Inicia sesión usando {{what}}"
       },
       "signUp": {
-        "label": "Sign Up",
-        "social": "Sign up using {{what}}"
+        "label": "Regístrate",
+        "social": "Regístrate usando {{what}}"
       },
-      "signOut": "Sign Out"
+      "signOut": "Cerrar sesión"
     }
   },
   "register": {
-    "alreadyHave": "I already have a membership",
-    "registerNew": "Register a new membership",
-    "label": "Register"
+    "alreadyHave": "Ya tengo una cuenta",
+    "registerNew": "Registrar una nueva cuenta",
+    "label": "Registrarse"
   },
   "recover": {
-    "forgotYourPassword": "You forgot your password? Here you can easily retrieve a new password.",
-    "oneStepAway": "You are only one step a way from your new password, recover your password now.",
-    "changePassword": "Change Password",
-    "requestNewPassword": "Request New Password"
+    "forgotYourPassword": "¿Olvidaste tu contraseña? Aquí puedes recuperar fácilmente una nueva.",
+    "oneStepAway": "Estás a solo un paso de tu nueva contraseña, recupérala ahora.",
+    "changePassword": "Cambiar contraseña",
+    "requestNewPassword": "Solicitar nueva contraseña"
   },
   "main": {
     "label": {
-      "moreInfo": "More info",
-      "follow": "Follow",
-      "aboutMe": "About Me",
-      "education": "Education",
-      "location": "Location",
-      "skills": "Skills",
-      "notes": "Notes",
-      "activity": "Activity",
-      "timeline": "Timeline",
-      "settings": "Settings"
+      "moreInfo": "Más información",
+      "follow": "Seguir",
+      "aboutMe": "Sobre mí",
+      "education": "Educación",
+      "location": "Ubicación",
+      "skills": "Habilidades",
+      "notes": "Notas",
+      "activity": "Actividad",
+      "timeline": "Línea de tiempo",
+      "settings": "Configuración"
     }
   },
   "header": {
     "label": {
-      "home": "Home",
-      "contact": "Contact"
+      "home": "Inicio",
+      "contact": "Contacto"
     },
     "language": {
-      "turkish": "Turkish",
-      "english": "English",
-      "german": "German",
-      "french": "French",
-      "spanish": "Spanish"
+      "turkish": "Turco",
+      "english": "Inglés",
+      "german": "Alemán",
+      "french": "Francés",
+      "spanish": "Español"
     },
     "messages": {
-      "ago": "{{quantity}} {{unit}} Ago",
-      "seeAll": "See All Messages"
+      "ago": "Hace {{quantity}} {{unit}}",
+      "seeAll": "Ver todos los mensajes"
     },
     "notifications": {
-      "count": "{{quantity}} Notifications",
-      "newMessagesCount": "{{quantity}} new messages",
-      "friendRequestsCount": "{{quantity}} friend requests",
-      "reportsCount": "{{quantity}} new reports",
-      "seeAll": "See All Notifications"
+      "count": "{{quantity}} notificaciones",
+      "newMessagesCount": "{{quantity}} mensajes nuevos",
+      "friendRequestsCount": "{{quantity}} solicitudes de amistad",
+      "reportsCount": "{{quantity}} informes nuevos",
+      "seeAll": "Ver todas las notificaciones"
     },
     "user": {
-      "profile": "Profile",
-      "followers": "Followers",
-      "sales": "Sales",
-      "friends": "Friends"
+      "profile": "Perfil",
+      "followers": "Seguidores",
+      "sales": "Ventas",
+      "friends": "Amigos"
     }
   },
   "menusidebar": {
     "label": {
-      "dashboard": "Dashboard",
-      "profile": "Profile",
-      "blank": "Blank",
-      "mainMenu": "Main Menu",
-      "subMenu": "Sub Menu"
+      "dashboard": "Panel de control",
+      "profile": "Perfil",
+      "blank": "En blanco",
+      "mainMenu": "Menú principal",
+      "subMenu": "Submenú"
     }
   },
   "footer": {
-    "version": "Version",
-    "copyright": "All rights reserved."
+    "version": "Versión",
+    "copyright": "Todos los derechos reservados."
   },
   "views": {
     "user": {
-      "profile": "User Profile",
-      "following": "Following"
+      "profile": "Perfil del usuario",
+      "following": "Siguiendo"
     }
   },
   "measurement": {

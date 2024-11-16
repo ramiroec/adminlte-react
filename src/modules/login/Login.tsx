@@ -55,7 +55,6 @@ const Login = () => {
     <div style={styles.loginBox}>
       <div style={styles.card}>
         <div style={styles.cardBody}>
-          <p style={styles.loginMsg}>{t('Ingrese su usuario y contraseña para iniciar sesión')}</p>
           <form onSubmit={handleSubmit}>
             <div style={styles.inputGroup}>
               <InputGroup>

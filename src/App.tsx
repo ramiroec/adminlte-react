@@ -14,6 +14,7 @@ import ReactGA from 'react-ga4';
 import Dashboard from '@pages/Dashboard';
 import Blank from '@pages/Blank';
 import Feriados from '@pages/Feriados';
+import Camara from '@pages/Camara';
 import Aire from '@pages/Aire';
 import Usuarios from '@pages/Usuarios';
 import Persona from '@pages/Persona';
@@ -99,6 +100,7 @@ const App = () => {
             <Route path="/sub-menu-1" element={<SubMenu />} />
             <Route path="/blank" element={<Blank />} />
             <Route path="/feriados" element={<Feriados />} />
+            <Route path="/camara" element={<Camara />} />
             <Route path="/aire" element={<Aire />} />
             <Route path="/usuarios" element={<Usuarios />} />
             <Route path="/persona" element={<Persona />} />

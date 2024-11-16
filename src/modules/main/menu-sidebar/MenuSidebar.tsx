@@ -31,6 +31,11 @@ export const MENU: IMenuItem[] = [
     path: '/aire',
   },
   {
+    name: 'Camara',
+    icon: 'fas fa-camera nav-icon',
+    path: '/camara',
+  },
+  {
     name: 'Feriados',
     icon: 'fas fa-calendar-day nav-icon',
     path: '/feriados',

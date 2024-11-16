@@ -1,74 +1,48 @@
+//Login.tsx;
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { setCurrentUser } from '@store/reducers/auth';
 import { setWindowClass } from '@app/utils/helpers';
-import { Checkbox } from '@profabric/react-components';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-
 import { Form, InputGroup } from 'react-bootstrap';
 import { Button } from '@app/styles/common';
-import { loginWithEmail, signInByGoogle } from '@app/services/auth';
-import { useAppDispatch } from '@app/store/store';
 
 const Login = () => {
   const [isAuthLoading, setAuthLoading] = useState(false);
-  const [isGoogleAuthLoading, setGoogleAuthLoading] = useState(false);
-  const [isFacebookAuthLoading, setFacebookAuthLoading] = useState(false);
-  const dispatch = useAppDispatch();
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [t] = useTranslation();
 
   const login = async (email: string, password: string) => {
+    setAuthLoading(true);
     try {
-      setAuthLoading(true);
-      const { user } = await loginWithEmail(email, password);
-      dispatch(setCurrentUser(user));
-      toast.success('Login is succeed!');
+      if (email === 'admin@example.com' && password === 'admin') {
+        const user = { email };
+        dispatch(setCurrentUser(user));
+        toast.success('Login is successful!');
+        navigate('/');
+      } else {
+        throw new Error('Invalid credentials');
+      }
+    } catch (error: any) {
+      toast.error(error.message || 'Failed');
+    } finally {
       setAuthLoading(false);
-      navigate('/');
-    } catch (error: any) {
-      setAuthLoading(false);
-      toast.error(error.message || 'Failed');
-    }
-  };
-
-  const loginByGoogle = async () => {
-    try {
-      setGoogleAuthLoading(true);
-      await signInByGoogle();
-      toast.success('Login is succeed!');
-      setGoogleAuthLoading(false);
-    } catch (error: any) {
-      setGoogleAuthLoading(false);
-      toast.error(error.message || 'Failed');
-    }
-  };
-
-  const loginByFacebook = async () => {
-    try {
-      setFacebookAuthLoading(true);
-      throw new Error('Not implemented');
-    } catch (error: any) {
-      setFacebookAuthLoading(false);
-      toast.error(error.message || 'Failed');
     }
   };
 
   const { handleChange, values, handleSubmit, touched, errors } = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: 'admin@example.com',
+      password: 'admin',
     },
     validationSchema: Yup.object({
       email: Yup.string().email('Invalid email address').required('Required'),
-      password: Yup.string()
-        .min(5, 'Must be 5 characters or more')
-        .max(30, 'Must be 30 characters or less')
-        .required('Required'),
+      password: Yup.string().required('Required'),
     }),
     onSubmit: (values) => {
       login(values.email, values.password);
@@ -78,19 +52,13 @@ const Login = () => {
   setWindowClass('hold-transition login-page');
 
   return (
-    <div className="login-box">
-      <div className="card card-outline card-primary">
-        <div className="card-header text-center">
-          <Link to="/" className="h1">
-            <b>Full</b>
-            <span>Stack</span>
-          </Link>
-        </div>
-        <div className="card-body">
-          <p className="login-box-msg">{t('login.label.signIn')}</p>
+    <div style={styles.loginBox}>
+      <div style={styles.card}>
+        <div style={styles.cardBody}>
+          <p style={styles.loginMsg}>{t('Ingrese su usuario y contraseña para iniciar sesión')}</p>
           <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <InputGroup className="mb-3">
+            <div style={styles.inputGroup}>
+              <InputGroup>
                 <Form.Control
                   id="email"
                   name="email"
@@ -100,22 +68,18 @@ const Login = () => {
                   value={values.email}
                   isValid={touched.email && !errors.email}
                   isInvalid={touched.email && !!errors.email}
+                  style={styles.input}
                 />
-                {touched.email && errors.email ? (
+                {touched.email && errors.email && (
                   <Form.Control.Feedback type="invalid">
                     {errors.email}
                   </Form.Control.Feedback>
-                ) : (
-                  <InputGroup.Append>
-                    <InputGroup.Text>
-                      <i className="fas fa-envelope" />
-                    </InputGroup.Text>
-                  </InputGroup.Append>
                 )}
               </InputGroup>
             </div>
-            <div className="mb-3">
-              <InputGroup className="mb-3">
+
+            <div style={styles.inputGroup}>
+              <InputGroup>
                 <Form.Control
                   id="password"
                   name="password"
@@ -125,75 +89,97 @@ const Login = () => {
                   value={values.password}
                   isValid={touched.password && !errors.password}
                   isInvalid={touched.password && !!errors.password}
+                  style={styles.input}
                 />
-                {touched.password && errors.password ? (
+                {touched.password && errors.password && (
                   <Form.Control.Feedback type="invalid">
                     {errors.password}
                   </Form.Control.Feedback>
-                ) : (
-                  <InputGroup.Append>
-                    <InputGroup.Text>
-                      <i className="fas fa-lock" />
-                    </InputGroup.Text>
-                  </InputGroup.Append>
                 )}
               </InputGroup>
             </div>
 
-            <div className="row">
-              <div className="col-8">
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <Checkbox checked={false} />
-                  <label style={{ margin: 0, padding: 0, paddingLeft: '4px' }}>
-                    {t('login.label.rememberMe')}
-                  </label>
-                </div>
-              </div>
-              <div className="col-4">
+            <div style={styles.row}>
+              <div style={styles.loginButtonContainer}>
                 <Button
                   loading={isAuthLoading}
-                  disabled={isFacebookAuthLoading || isGoogleAuthLoading}
                   onClick={handleSubmit as any}
+                  style={styles.loginButton}
                 >
-                  {t('login.button.signIn.label')}
+                  {isAuthLoading ? 'Cargando...' : t('login.button.signIn.label')}
                 </Button>
               </div>
             </div>
           </form>
-          <div className="social-auth-links text-center mt-2 mb-3">
-            <Button
-              className="mb-2"
-              onClick={loginByFacebook}
-              loading={isFacebookAuthLoading}
-              disabled={true || isAuthLoading || isGoogleAuthLoading}
-            >
-              <i className="fab fa-facebook mr-2" />
-              {t('login.button.signIn.social', {
-                what: 'Facebook',
-              })}
-            </Button>
-            <Button
-              variant="danger"
-              onClick={loginByGoogle}
-              loading={isGoogleAuthLoading}
-              disabled={isAuthLoading || isFacebookAuthLoading}
-            >
-              <i className="fab fa-google mr-2" />
-              {t('login.button.signIn.social', { what: 'Google' })}
-            </Button>
-          </div>
-          <p className="mb-1">
-            <Link to="/forgot-password">{t('login.label.forgotPass')}</Link>
-          </p>
-          <p className="mb-0">
-            <Link to="/register" className="text-center">
-              {t('login.label.registerNew')}
-            </Link>
-          </p>
         </div>
       </div>
     </div>
   );
+};
+
+const styles = {
+  loginBox: {
+    backgroundColor: '#E4FBFC',
+    width: '400px',
+    margin: '0 auto',
+    padding: '20px',
+    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+    borderRadius: '10px',
+    border: '3px solid #B0F0F5',
+  },
+  card: {
+    backgroundColor: 'transparent',
+    borderRadius: '10px',
+  },
+  cardHeader: {
+    display: 'flex', // Utiliza flexbox para la alineación
+    justifyContent: 'center', // Centra el contenido horizontalmente
+    alignItems: 'center', // Centra el contenido verticalmente
+    padding: '10px',
+  },
+  
+  logo: {
+    maxWidth: '70%',
+    height: 'auto',
+    marginBottom: '20px',
+  },
+  cardBody: {
+    padding: '20px',
+  },
+  loginMsg: {
+    color: '#6B7280',
+   // textAlign: 'center',
+    fontSize: '14px',
+    marginBottom: '40px',
+    padding: '15px',
+  },
+  inputGroup: {
+    marginBottom: '25px',
+  },
+  input: {
+    backgroundColor: 'white',
+    borderRadius: '10px',
+    padding: '10px 20px',
+  },
+  row: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '10px',
+  },
+  loginButtonContainer: {
+    flex: '0 0 100%',
+  },
+  loginButton: {
+    backgroundColor: '#1CBED2',
+    color: '#FFFFFF',
+    border: 'none',
+    padding: '5px 5px',
+    borderRadius: '10px',
+    width: '50%',
+    margin: '0 auto',
+    display: 'block',
+  },
 };
 
 export default Login;
